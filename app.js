@@ -23,4 +23,4 @@ app.post('/login', (req,res)=>{
     res.send('Ya te logueaste campeón');
 });
 
-app.listen(3000, () => console.log('Servidor funcionando'));
+app.listen(process.env.PORT || 3000, () => console.log('Servidor funcionando'));
