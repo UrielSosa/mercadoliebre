@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<%- include('partials/head')  %>
+
+    <body>
+        <!--Header-->
+        <%- include('partials/header')  %>
+        <!--/Header-->
+       
+        <main>
+            <form method="POST">
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <button type="submit">Loguearse</button>
+            </form>
+        </main>
+
+        <footer>
+            &copy
+        </footer>
+        
+    </body>
+</html>
