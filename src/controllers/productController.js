@@ -149,7 +149,7 @@ let db = [
 
 
 module.exports = {
-    index: () => {
+    index: (req, res) => {
         res.render('products/products');
     },
     detail (req, res) {
