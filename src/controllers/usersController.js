@@ -2,13 +2,13 @@ const path = require('path');
 
 let controller = {
     register: (req,res)=>{
-        res.render('register');
+        res.render('users/register');
     },
     registered: function (req, res) {
         
     },
     login (req,res) {
-        res.render('login');
+        res.render('users/login');
     }
 }
 

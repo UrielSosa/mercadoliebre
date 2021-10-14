@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-	<%- include('partials/head')  %>
+    <%- include('../partials/head', {title: 'Login', style: '/css/form.css'})  %> 
 
     <body>
         <!--Header-->
-        <%- include('partials/header')  %>
+        <%- include('../partials/header')  %>
         <!--/Header-->
        
         <main>
-            <form method="POST">
+            <form method="POST" class="login-form">
                 <div class="form-control">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email">
@@ -17,13 +17,11 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <button type="submit">Loguearse</button>
+                <button type="submit" class="btn btn-success">Loguearse</button>
             </form>
         </main>
 
-        <footer>
-            &copy
-        </footer>
+        <%- include('../partials/footer')  %>
         
     </body>
 </html>

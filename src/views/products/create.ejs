@@ -15,17 +15,17 @@
 
 <body>
 	<!-- Header -->
-	<%- include('partials/header')  %>
+	<%- include('../partials/header')  %>
 	<!-- /Header -->
 
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Estás editando: <i>PRODUCT NAME</i></h2>
+				<h2 class="products-title">Formulario de creación de productos</h2>
 			</div>
 		</div>
 		<div class="col-12">
-			<form action="/products/edit/¿?" method="___">
+			<form action="¿?" method="___">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
@@ -44,12 +44,12 @@
 						<select name="category" id="category" class="form-input">
 							<option value="">Elegí</option>
 							<option value="in-sale">En oferta</option>
-							<option value="visited" >Últimos agregados</option>
+							<option value="visited">Últimos agregados</option>
 						</select>
 					</div>
 					<div class="col-12">
 						<label for="description" class="form-label">Descipción:</label>
-						<textarea name="description" id="description" class="form-input"><%= productToEdit.description %></textarea>
+						<textarea name="description" id="description" class="form-input"></textarea>
 					</div>
 					<div class="col-12">
 						<button type="submit" class="buy-now-button">Guardar producto</button>
@@ -62,41 +62,7 @@
 	<!-- /todos los productos -->
 
 	<!-- footer -->
-	<footer class="main-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-credit-card"></i>
-						<h2>Pagá con tarjeta o en efectivo</h2>
-						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y siempre
-							es seguro!</p>
-					</article>
-				</div>
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-gift"></i>
-						<h2>Envío gratis desde $ 1.999</h2>
-						<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un beneficio
-							de Mercado Puntos.</p>
-					</article>
-				</div>
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-user-shield"></i>
-						<h2>Seguridad, de principio a fin</h2>
-						<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás siempre
-							protegido.</p>
-					</article>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<div class="sub-footer">
-		<div class="container">
-			<p>Copyright &copy; UrielSosa 1999-2021 MercadoLiebre S.R.L.</p>
-		</div>
-	</div>
+	<%- include('../partials/footer')  %>
 	<!-- /footer -->
 </body>	
 </html>
