@@ -24,5 +24,4 @@ app.use('/users', usersRouter);
 
 
 
-
 app.listen(process.env.PORT || 3000, () => console.log('Servidor funcionando'));
