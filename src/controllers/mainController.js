@@ -5,7 +5,6 @@ const fs = require('fs');
 let jsonProducts = fs.readFileSync(path.resolve(__dirname, '../db/products.json'), 'utf-8');
 let products = JSON.parse(jsonProducts); //Convertimos el json a array
 
-
 module.exports = {
     home: (req, res) => {
         let visited = [];
@@ -18,7 +17,6 @@ module.exports = {
                 visited.push(product)
             }
         });
-
         res.render('home', { insale, visited });
     }
 }
