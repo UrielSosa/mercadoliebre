@@ -109,11 +109,11 @@
     },
     {
         "id": 13,
-        "name": "ajdñlajs",
-        "price": "12312",
-        "discount": "12",
-        "category": "in-sale",
-        "description": "aljsdñlajsda",
+        "name": "Los juegos del hambre",
+        "price": "2000",
+        "discount": "10",
+        "category": "visited",
+        "description": "Los mejores juegos",
         "image": "default-image.png"
     },
     {

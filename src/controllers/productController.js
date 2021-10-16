@@ -68,6 +68,28 @@ module.exports = {
         res.render('products/edit', { product: productoEditar });
     },
     update (req, res) {
-        res.send('Editando')
+
+        // Editamos el producto buscandolo con una condición
+        products.forEach(product => {
+            if (product.id == req.params.id) {
+                product.name = req.body.name;
+                product.description = req.body.description;
+                product.price = req.body.price;
+                product.discount = req.body.discount;
+                product.category = req.body.category;
+                product.image = 'default-image.png';
+            }
+        })
+
+        // let productToEdit = products.find(product => {
+        //     return product.id == req.params.id;
+        // })
+        // productToEdit.name = req.body.name;
+
+        // Pasamos a json todos los productos y sobreescribimos la db
+        let jsonDeProductos = JSON.stringify(products, null, 4);
+        fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
+
+        res.redirect('/');
     }
 }
