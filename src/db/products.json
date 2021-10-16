@@ -99,30 +99,12 @@
         "image": "default-image.png"
     },
     {
-        "id": 12,
-        "name": "ajdñlajs",
-        "price": "12312",
-        "discount": "12",
-        "category": "in-sale",
-        "description": "aljsdñlajsda",
-        "image": "default-image.png"
-    },
-    {
         "id": 13,
         "name": "Los juegos del hambre",
         "price": "2000",
         "discount": "10",
         "category": "visited",
         "description": "Los mejores juegos",
-        "image": "default-image.png"
-    },
-    {
-        "id": 14,
-        "name": "Producto nuevo",
-        "price": "1000",
-        "discount": "100",
-        "category": "visited",
-        "description": "Una desc",
         "image": "default-image.png"
     }
 ]
