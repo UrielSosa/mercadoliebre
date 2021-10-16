@@ -15,7 +15,7 @@ _Tené en cuenta que si hay cosas que te parecen similares es porque podemos hac
 6. Crear la funcionalidad para crear un nuevo producto
     - Palabras clave (req.body, push, JSON.stringify, fs.writeFileSync, res.redirect, method post)
 7. Crear la funcionalidad de actualizar producto
-    - Palabras clave (req.body, find, method-override, JSON.stringify, fs.writeFileSync, res.redirect)
+    - Palabras clave (req.body, find, map, method-override, JSON.stringify, fs.writeFileSync, res.redirect)
 8. Crear funcionalidad para borrar producto
     - Palabras clave (filter, req.params.id, method-override, JSON.stringify, fs.writeFileSync, res.redirect)
 

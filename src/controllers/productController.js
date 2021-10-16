@@ -5,6 +5,15 @@ const fs = require('fs');
 let jsonProducts = fs.readFileSync(path.resolve(__dirname, '../db/products.json'), 'utf-8');
 let products = JSON.parse(jsonProducts); //Convertimos el json a array
 
+const nuevoId = () => {
+    let ultimo = 0;
+    products.forEach(product => {
+        if (product.id > ultimo) {
+            ultimo = product.id;
+        }
+    });
+    return ultimo + 1;
+}
 
 module.exports = {
     index: (req, res) => {
@@ -23,6 +32,34 @@ module.exports = {
     },
     create: (req, res) => {
         res.render('products/create');
+    },
+    store (req, res) {
+        // Creamos el producto base
+        let product = {
+            id: nuevoId(),
+            ...req.body,
+             image: 'default-image.png'
+        }
+        // let product = {
+        //     id: nuevoId(),
+        //     name: req.body.name,
+        //     description: req.body.description,
+        //     price: Number(req.body.price),
+        //     discount: Number(req.body.discount),
+        //     category: req.body.category,
+        //     image: 'default-image.png'
+        // }
+
+        // Agregamos el nuevo producto
+        products.push(product);
+
+        // Pasamos a json todos los productos y sobreescribimos la db
+        let jsonDeProductos = JSON.stringify(products, null, 4);
+        fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
+
+        //Enviamos al detalle del producto
+        //res.redirect('/products/detail/' + product.id);
+        res.redirect('/');
     },
     edit: function (req, res) {
         let productoEditar = products.find(product => {

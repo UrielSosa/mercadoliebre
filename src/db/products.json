@@ -88,5 +88,41 @@
         "discount": 95,
         "category": "in-sale",
         "image": "img-aire-acondicionado.jpg"
+    },
+    {
+        "id": 11,
+        "name": "ajdñlajs",
+        "price": "12312",
+        "discount": "12",
+        "category": "in-sale",
+        "description": "aljsdñlajsda",
+        "image": "default-image.png"
+    },
+    {
+        "id": 12,
+        "name": "ajdñlajs",
+        "price": "12312",
+        "discount": "12",
+        "category": "in-sale",
+        "description": "aljsdñlajsda",
+        "image": "default-image.png"
+    },
+    {
+        "id": 13,
+        "name": "ajdñlajs",
+        "price": "12312",
+        "discount": "12",
+        "category": "in-sale",
+        "description": "aljsdñlajsda",
+        "image": "default-image.png"
+    },
+    {
+        "id": 14,
+        "name": "Producto nuevo",
+        "price": "1000",
+        "discount": "100",
+        "category": "visited",
+        "description": "Una desc",
+        "image": "default-image.png"
     }
 ]

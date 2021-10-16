@@ -10,7 +10,8 @@ app.set('views', path.resolve(__dirname, 'views'));
 /* Config express */
 app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(methodOverride('_method'));
-
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 /* Routes */
