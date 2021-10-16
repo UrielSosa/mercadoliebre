@@ -12,11 +12,9 @@ module.exports = {
     },
     detail (req, res) {
         let id = req.params.id;
-
         // let productoDetalle = products.filter(product => {
         //     return product.id == id;
         // })
-
         let productoDetalle = products.find(product => {
             return product.id == id;
         })
@@ -27,6 +25,12 @@ module.exports = {
         res.render('products/create');
     },
     edit: function (req, res) {
-        res.render('products/edit');
+        let productoEditar = products.find(product => {
+            return product.id == req.params.id;
+        })
+        res.render('products/edit', { product: productoEditar });
+    },
+    update (req, res) {
+        res.send('Editando')
     }
 }
