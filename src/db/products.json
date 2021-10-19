@@ -106,5 +106,14 @@
         "category": "visited",
         "description": "Los mejores juegos",
         "image": "default-image.png"
+    },
+    {
+        "id": 14,
+        "name": "apkjsda",
+        "price": "11111",
+        "discount": "12",
+        "category": "in-sale",
+        "description": "alkd{alksd{a",
+        "image": "product-1634600569877.jpg"
     }
 ]

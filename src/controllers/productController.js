@@ -38,18 +38,8 @@ module.exports = {
         let product = {
             id: nuevoId(),
             ...req.body,
-             image: 'default-image.png'
+             image: req.file.filename || 'default-image.png',
         }
-        // let product = {
-        //     id: nuevoId(),
-        //     name: req.body.name,
-        //     description: req.body.description,
-        //     price: Number(req.body.price),
-        //     discount: Number(req.body.discount),
-        //     category: req.body.category,
-        //     image: 'default-image.png'
-        // }
-
         // Agregamos el nuevo producto
         products.push(product);
 
