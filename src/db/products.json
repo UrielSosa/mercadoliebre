@@ -11,11 +11,11 @@
     {
         "id": 2,
         "name": "Louise Brooks: Looking for Lulu",
-        "description": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-        "price": 175171,
-        "discount": 54,
-        "category": "visited",
-        "image": "img-macbook-pro-2019.jpg"
+        "description": "In congue. Etiam justo. Etiam pretium iaculis justo......",
+        "price": "175171",
+        "discount": "54",
+        "category": "",
+        "image": "default-image.png"
     },
     {
         "id": 3,
@@ -96,15 +96,6 @@
         "discount": "12",
         "category": "in-sale",
         "description": "aljsdñlajsda",
-        "image": "default-image.png"
-    },
-    {
-        "id": 13,
-        "name": "Los juegos del hambre",
-        "price": "2000",
-        "discount": "10",
-        "category": "visited",
-        "description": "Los mejores juegos",
         "image": "default-image.png"
     },
     {

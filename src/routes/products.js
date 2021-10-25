@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 /* Envios de vistas */
-router.get('/', controller.index); // Ruta para crear
+router.get('/', controller.index); // Listado de productos
 router.post('/', upload.single('image'), controller.store); //Ruta que guarda
 
 router.get('/create', controller.create);

@@ -49,7 +49,7 @@ module.exports = {
 
         //Enviamos al detalle del producto
         //res.redirect('/products/detail/' + product.id);
-        res.redirect('/');
+        res.redirect('/products');
     },
     edit: function (req, res) {
         let productoEditar = products.find(product => {
@@ -80,7 +80,7 @@ module.exports = {
         let jsonDeProductos = JSON.stringify(products, null, 4);
         fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
 
-        res.redirect('/');
+        res.redirect('/products');
     },
     delete (req, res) {
 
@@ -91,6 +91,6 @@ module.exports = {
         let jsonDeProductos = JSON.stringify(productosRestantes, null, 4);
         fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
 
-        res.redirect('/');
+        res.redirect('/products');
     }
 }
