@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-
 const controller = require('../controllers/productController');
+const { validateCreate } = require('../middlewares/validaciones');
 
 /* Configuracion de multer */
 const storage = multer.diskStorage({
@@ -18,9 +18,13 @@ const storage = multer.diskStorage({
   
 const upload = multer({ storage })
 
+
+
+
+
 /* Envios de vistas */
 router.get('/', controller.index); // Listado de productos
-router.post('/', upload.single('image'), controller.store); //Ruta que guarda
+router.post('/', upload.single('image'), validateCreate, controller.store); //Ruta que guarda
 
 router.get('/create', controller.create);
 router.get('/edit/:id', controller.edit);

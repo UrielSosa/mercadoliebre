@@ -106,5 +106,14 @@
         "category": "in-sale",
         "description": "alkd{alksd{a",
         "image": "product-1634600569877.jpg"
+    },
+    {
+        "id": 15,
+        "name": "",
+        "price": "",
+        "discount": "",
+        "category": "",
+        "description": "",
+        "image": "product-1635203218859.png"
     }
 ]

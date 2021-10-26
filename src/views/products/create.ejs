@@ -19,7 +19,10 @@
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
-						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input">
+						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input" value="<%= typeof old != 'undefined'? old.name: '' %>">
+						<% if (typeof errors != 'undefined' && typeof errors.name != 'undefined') { %>
+							<span style="color: red"><%= errors.name.msg %></span>
+						<% } %>
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="price" class="form-label">Precio del producto:</label>
