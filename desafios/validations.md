@@ -1,4 +1,4 @@
-Validaciones para el form de crear
+### Validaciones para el form de crear
 - name (que no esté vacio - minimo de 2 caracteres - que sea string)
 - price (que no esté vacio - que sea numerico)
 - discount (que sea numerico)
@@ -6,8 +6,14 @@ Validaciones para el form de crear
 - Image (que venga una imagen)
 - Description (que tenga como maximo 100 caracteres - que no esté vacio)
 
+### Validaciones para el form de registro
+- name (que no esté vacio - minimo de dos caracteres)
+- email (que no esté vacio - que sea un mail valido)
+- password (minimo 8 caracteres)
+- repassword (que sea igual al campo password)
 
-Paso a paso express validator
+
+## Paso a paso express validator
 1. Instalamos express validator
 2. Requerimos express validator en las rutas
 3. Usamos check para validar los campos del form

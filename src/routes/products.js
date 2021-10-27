@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router();
 const multer = require('multer');
+const router = express.Router();
 const path = require('path');
 const controller = require('../controllers/productController');
 const { validationCreate } = require('../middlewares/validaciones');
@@ -20,20 +20,16 @@ const upload = multer({ storage })
 
 
 
-
+/* Procesamiento de datos */
+router.post('/', upload.single('image'), validationCreate, controller.store); //Ruta que guarda
+router.put('/edit/:id', controller.update);
+router.delete('/:id', controller.delete);
 
 /* Envios de vistas */
 router.get('/', controller.index); // Listado de productos
-router.post('/', upload.single('image'), validationCreate, controller.store); //Ruta que guarda
-
 router.get('/create', controller.create);
 router.get('/edit/:id', controller.edit);
-
 router.get('/:id', controller.detail);
-
-/* Procesamiento de datos */
-router.delete('/:id', controller.delete);
-router.put('/edit/:id', controller.update);
 
 
 module.exports = router;

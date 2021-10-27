@@ -33,7 +33,7 @@ module.exports = {
     },
     store (req, res) {
         const errors = validationResult(req);
-
+        
         if (!errors.isEmpty()) {
             return res.render('products/create', { errors: errors.mapped(), old: req.body })
         }else {
@@ -70,12 +70,6 @@ module.exports = {
             }
         })
 
-        // let productToEdit = products.find(product => {
-        //     return product.id == req.params.id;
-        // })
-        // productToEdit.name = req.body.name;
-
-        // Pasamos a json todos los productos y sobreescribimos la db
         let jsonDeProductos = JSON.stringify(products, null, 4);
         fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
 
