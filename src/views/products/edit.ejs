@@ -37,11 +37,14 @@
 							<option value="visited" >Últimos agregados</option>
 						</select>
 					</div>
-					<div class="col-12">
+					<div class="col-12 col-md-6">
 						<label for="description" class="form-label">Descripción:</label>
 						<textarea name="description" id="description" class="form-input"><%= product.description %></textarea>
 					</div>
-					<div class="col-12">
+					<div class="col-12 col-md-6">
+						<img src="/images/products/<%= product.image %>" alt="" class="w60">
+					</div>
+					<div class="col-6">
 						<button type="submit" class="buy-now-button">Guardar producto</button>
 					</div>
 				</div>

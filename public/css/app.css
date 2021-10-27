@@ -466,3 +466,6 @@ textarea.form-input {
     margin: auto;
   }
 }
+.w60 {
+  width: 60% !important;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('../partials/head', {title: 'Todos los productos'})  %>
+<%- include('../partials/head', {title: 'Todos los productos', style: '/css/form.css'})  %>
 <body>
 	<!-- Header -->
 	<%- include('../partials/header')  %>
@@ -13,23 +13,37 @@
 			<div class="col-12">
 				<h2 class="products-title">Todos los productos</h2>
 			</div>
-		
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/products/detail/¿?">
-						<figure class="product-box_image">
-							<img src="/images/products/¿?" alt="imagen de producto">
-						</figure>
-						<article class="product-box_data">
-							<h2>$FINAL PRICE/h2>
-							<span>DISCOUNT% OFF</span>
-							<p>PRODUCT NAMe</p>
-							<i class="fas fa-truck"></i>
-						</article>
-					</a>
-				</section>
-			</div>
-		
+			<table class="col-12">
+				<thead>
+					<td>id</td>
+					<td>Nombre</td>
+					<td>Precio</td>
+					<td>Categoria</td>
+					<td>Descuento</td>
+					<td>Acciones</td>
+					<td><button class="btn btn-primary"> Crear nuevo</button></td>
+				</thead>
+				<tbody>
+					<% products.forEach(product => { %>
+						<tr>
+							<td><%= product.id %></td>
+							<td><%= product.name %></td>
+							<td><%= product.price %></td>
+							<td><%= product.category %></td>
+							<td><%= product.discount %></td>
+							<td>
+								<a href="/products/<%= product.id %>" class="btn btn-info">Detalle</a>
+								<a href="/products/edit/<%= product.id %>" class="btn btn-success">Editar</a>
+							
+								<form action="/products/<%= product.id %>?_method=DELETE" method="post" class="d-inline">
+									<button class="btn btn-danger">Borrar</button>
+								</form>
+							</td>
+						</tr>
+					<% }) %>
+				</tbody>
+
+			</table>
 		</div>
 	</div>
 	<!-- /todos los productos -->

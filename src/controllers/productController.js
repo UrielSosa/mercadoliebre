@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { validationResult } = require('express-validator');
+
 /* Logica para traer los productos */
 let jsonProducts = fs.readFileSync(path.resolve(__dirname, '../db/products.json'), 'utf-8');
 let products = JSON.parse(jsonProducts); //Convertimos el json a array
@@ -17,13 +18,10 @@ const nuevoId = () => {
 
 module.exports = {
     index: (req, res) => {
-        res.render('products/products');
+        res.render('products/products', { products });
     },
     detail (req, res) {
         let id = req.params.id;
-        // let productoDetalle = products.filter(product => {
-        //     return product.id == id;
-        // })
         let productoDetalle = products.find(product => {
             return product.id == id;
         })
