@@ -35,29 +35,22 @@ module.exports = {
     },
     store (req, res) {
         const errors = validationResult(req);
+
         if (!errors.isEmpty()) {
-            res.render('products/create', { errors: errors.mapped(), old: req.body })
+            return res.render('products/create', { errors: errors.mapped(), old: req.body })
+        }else {
+            let product = {
+                id: nuevoId(),
+                ...req.body,
+                 image: req.file.filename || 'default-image.png',
+            }
+            products.push(product);
+
+            let jsonDeProductos = JSON.stringify(products, null, 4);
+            fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
+            
+            return res.redirect('/products');
         }
-        
-        return ;
-
-
-        // Creamos el producto base
-        let product = {
-            id: nuevoId(),
-            ...req.body,
-             image: req.file.filename || 'default-image.png',
-        }
-        // Agregamos el nuevo producto
-        products.push(product);
-
-        // Pasamos a json todos los productos y sobreescribimos la db
-        let jsonDeProductos = JSON.stringify(products, null, 4);
-        fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
-
-        //Enviamos al detalle del producto
-        //res.redirect('/products/detail/' + product.id);
-        res.redirect('/products');
     },
     edit: function (req, res) {
         let productoEditar = products.find(product => {
