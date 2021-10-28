@@ -29,4 +29,19 @@ const cookieParser = require('cookieParser');
 
 app.use(cookieParser());
 ```
-6. 
+6. Instalamos el modulo **bcryptjs** para poder encriptar la contraseña del usuario
+_link a este modulo [acá](https://www.npmjs.com/package/bcryptjs)_
+```
+npm i bcryptjs
+```
+_Tené en cuenta que el modulo es bcryptjs y no bcrypt. El segundo es un modulo deprecado_
+7. Tenemos que requerirlo en el lugar que lo vamos a implementar
+_Ya que el punto en el que recibimos los datos ya filtrados es el controller, ahí mismo lo requerimos e implementamos_
+```
+const bcrypt = require('bcryptjs');
+```
+8. Normalmente los metodos que mas vamos a utilizar son los siguientes
+```
+let hash = bcrypt.hashSync("frase a hashear", 8) //hashea el dato que le pasemos
+bcrypt.compareSync("frase a hashear", hash) // compara el dato que tenemos con el dato hasheado y devuelve true o false
+```
