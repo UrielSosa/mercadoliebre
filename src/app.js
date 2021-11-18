@@ -4,6 +4,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 /* config template */
 app.set('view engine', 'ejs');
@@ -17,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(session({
-    secret: 'hello world',
+    secret: process.env.SECRET_SESSION,
     saveUninitialized: false,
     resave: false
 }));
