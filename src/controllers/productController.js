@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { validationResult } = require('express-validator');
+const { decodeBase64 } = require('bcryptjs');
 
 /* Logica para traer los productos */
 let jsonProducts = fs.readFileSync(path.resolve(__dirname, '../db/products.json'), 'utf-8');
@@ -40,8 +41,9 @@ module.exports = {
             let product = {
                 id: nuevoId(),
                 ...req.body,
-                 image: req.file.filename || 'default-image.png',
+                image: req.file.filename || 'default-image.png',
             }
+
             products.push(product);
 
             let jsonDeProductos = JSON.stringify(products, null, 4);
