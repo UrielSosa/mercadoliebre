@@ -1,33 +1,25 @@
-const path = require('path');
-const fs = require('fs');
 const { validationResult } = require('express-validator');
-const { decodeBase64 } = require('bcryptjs');
+let db = require('../db/models')
 
-/* Logica para traer los productos */
-let jsonProducts = fs.readFileSync(path.resolve(__dirname, '../db/products.json'), 'utf-8');
-let products = JSON.parse(jsonProducts); //Convertimos el json a array
-
-const nuevoId = () => {
-    let ultimo = 0;
-    products.forEach(product => {
-        if (product.id > ultimo) {
-            ultimo = product.id;
-        }
-    });
-    return ultimo + 1;
-}
 
 module.exports = {
     index: (req, res) => {
-        res.render('products/products', { products });
+        db.Product.findAll()
+            .then(products => {
+                return res.render('products/products', { products });
+            }).catch(error => {
+                return res.send(error)
+            })
+        
     },
     detail (req, res) {
-        let id = req.params.id;
-        let productoDetalle = products.find(product => {
-            return product.id == id;
-        })
+        db.Product.findByPk(req.params.id)
+            .then(product => {
+                res.render('products/detail', { product });
+            }).catch(error => {
+                return res.send(error)
+            })
 
-        res.render('products/detail', { product: productoDetalle });
     },
     create: (req, res) => {
         res.render('products/create');
@@ -39,53 +31,50 @@ module.exports = {
             return res.render('products/create', { errors: errors.mapped(), old: req.body })
         }else {
             let product = {
-                id: nuevoId(),
                 ...req.body,
                 image: req.file.filename || 'default-image.png',
             }
 
-            products.push(product);
-
-            let jsonDeProductos = JSON.stringify(products, null, 4);
-            fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
-            
-            return res.redirect('/products');
+            db.Product.create(product)
+                .then(product => {
+                    return res.redirect(`/products/${product.id}`);
+                }).catch(error => {
+                    return res.send(error)
+                })
         }
     },
     edit: function (req, res) {
-        let productoEditar = products.find(product => {
-            return product.id == req.params.id;
-        })
-        res.render('products/edit', { product: productoEditar });
+        db.Product.findByPk(req.params.id)
+                .then(product => {
+                    res.render('products/edit', { product });
+                }).catch(error => {
+                    return res.send(error)
+                })
     },
     update (req, res) {
-
-        // Editamos el producto buscandolo con una condición
-        products.forEach(product => {
-            if (product.id == req.params.id) {
-                product.name = req.body.name;
-                product.description = req.body.description;
-                product.price = req.body.price;
-                product.discount = req.body.discount;
-                product.category = req.body.category;
-                product.image = 'default-image.png';
+        let product = {
+            ...req.body,
+            image: req.file.filename || 'default-image.png',
+        }
+        db.Product.update(product, {
+            where: {
+                id: req.params.id
             }
         })
-
-        let jsonDeProductos = JSON.stringify(products, null, 4);
-        fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
-
+        
         res.redirect('/products');
     },
     delete (req, res) {
 
-        let productosRestantes = products.filter(product => {
-            return product.id != req.params.id;
+        db.Product.destroy({
+            where: {
+                id: req.params.id
+            }
         })
-
-        let jsonDeProductos = JSON.stringify(productosRestantes, null, 4);
-        fs.writeFileSync(path.resolve(__dirname, '../db/products.json'), jsonDeProductos);
-
-        res.redirect('/products');
+            .then(x => {
+                res.redirect('/products');
+            }).catch(error => {
+                return res.send(error)
+            })        
     }
 }

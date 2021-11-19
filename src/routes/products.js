@@ -22,7 +22,7 @@ const upload = multer({ storage })
 
 /* Procesamiento de datos */
 router.post('/', upload.single('image'), validationCreate, controller.store); //Ruta que guarda
-router.put('/edit/:id', controller.update);
+router.put('/edit/:id',upload.single('image'), controller.update);
 router.delete('/:id', controller.delete);
 
 /* Envios de vistas */

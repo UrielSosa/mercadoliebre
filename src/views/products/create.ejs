@@ -42,8 +42,8 @@
 						<label for="category" class="form-label">Categoría:</label>
 						<select name="category" id="category" class="form-input">
 							<option value="">Elegí</option>
-							<option value="in-sale" <%= typeof old != 'undefined' && old.category == 'in-sale'? 'selected': null %>>En oferta</option>
-							<option value="visited" <%= typeof old != 'undefined' && old.category == 'visited'? 'selected': null %>>Últimos agregados</option>
+							<option value="1" <%= typeof old != 'undefined' && old.category == 'in-sale'? 'selected': null %>>En oferta</option>
+							<option value="2" <%= typeof old != 'undefined' && old.category == 'visited'? 'selected': null %>>Últimos agregados</option>
 						</select>
 						<% if (typeof errors != 'undefined' && typeof errors.category != 'undefined') { %>
 							<span style="color: red"><%= errors.category.msg %></span>
