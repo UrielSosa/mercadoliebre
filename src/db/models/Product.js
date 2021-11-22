@@ -40,7 +40,14 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: true,
         paranoid: true
     }
-
+    
     const Product = sequelize.define(alias, cols, config);
+
+    Product.associate = models => {
+        Product.belongsTo(models.Category, {as: 'category', foreignKey: 'category_id'});
+    }
+
     return Product;
 }
+
+// Un producto tiene una categoria - belongsTo
