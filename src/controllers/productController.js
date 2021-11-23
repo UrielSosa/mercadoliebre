@@ -22,13 +22,23 @@ module.exports = {
 
     },
     create: (req, res) => {
-        res.render('products/create');
+        db.Category.findAll()
+            .then(categories => {
+                res.render('products/create', { categories })
+            }).catch(error => {
+                return res.send(error)
+            })
     },
     store (req, res) {
         const errors = validationResult(req);
         
         if (!errors.isEmpty()) {
-            return res.render('products/create', { errors: errors.mapped(), old: req.body })
+            db.Category.findAll()
+                .then(categories => {
+                    return res.render('products/create', { errors: errors.mapped(), old: req.body, categories })
+                }).catch(error => {
+                    return res.send(error)
+                })
         }else {
             let product = {
                 ...req.body,
