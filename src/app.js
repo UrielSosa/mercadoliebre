@@ -27,8 +27,10 @@ app.use(session({
 const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
+const apiRouter = require('./routes/api');
 
 app.use('/', mainRouter);
+app.use('/api', apiRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 

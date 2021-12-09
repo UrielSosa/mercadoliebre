@@ -6,8 +6,7 @@ module.exports = {
     index: (req, res) => {
         db.Product.findAll({include: {all: true}})
             .then(products => {
-                return res.send(products);
-                // return res.render('products/products', { products });
+                return res.render('products/products', { products });
             }).catch(error => {
                 return res.send(error)
             })
