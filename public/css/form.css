@@ -123,3 +123,12 @@ h4 {
 .d-inline {
     display: inline;
 }
+#ojito {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    font-size: 15px;
+}
+.position-re {
+    position: relative;
+}
