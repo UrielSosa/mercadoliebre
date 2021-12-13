@@ -1,6 +1,2 @@
-const qs = (element) => {
-    return document.querySelector(element);
-}
-const qsa = (element) => {
-    return document.querySelectorAll(element);
-}
+const qs = element => document.querySelector(element)
+const qsa = element => document.querySelectorAll(element)

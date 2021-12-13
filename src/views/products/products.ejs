@@ -35,8 +35,8 @@
 								<a href="/products/<%= product.id %>" class="btn btn-info">Detalle</a>
 								<a href="/products/edit/<%= product.id %>" class="btn btn-success">Editar</a>
 							
-								<form action="/products/<%= product.id %>?_method=DELETE" method="post" class="d-inline">
-									<button class="btn btn-danger">Borrar</button>
+								<form action="/products/<%= product.id %>?_method=DELETE" method="post" class="d-inline form-delete">
+									<button class="btn btn-danger" type="submit">Borrar</button>
 								</form>
 							</td>
 						</tr>
@@ -51,5 +51,6 @@
 	<!-- footer -->
 	<%- include('../partials/footer')  %>
 	<!-- /footer -->
+	<script src="/js/warning.js"></script>
 </body>	
 </html>
