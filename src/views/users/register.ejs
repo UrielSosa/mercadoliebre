@@ -7,16 +7,18 @@
 	    <!-- /Header -->
        
         <main>
-            <form method="POST" enctype="multipart/form-data"><!--Enctype se agrega solo si tenemos input de tipo file-->
+            <form method="POST" enctype="multipart/form-data" id="register"><!--Enctype se agrega solo si tenemos input de tipo file-->
                 
                 <div class="form-control">
                     <label for="">Nombre</label>
                     <input type="text" name="name">
+                    <span style="color: red" id="name"></span>
                 </div>
 
                 <div class="form-control">
                     <label for="">Email</label>
                     <input type="email" name="email">
+                    <span style="color: red" id="email"></span>
                 </div>
 
                 <div class="form-control">
@@ -42,6 +44,6 @@
         </main>
 
         <%- include('../partials/footer')  %>
-
+        <script src="/js/registerValidation.js"></script>
     </body>
 </html>
