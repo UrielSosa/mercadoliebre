@@ -19,21 +19,24 @@
 			</div>
 			<!-- Show the "visited" products -->
 
-			<% visited.forEach(product => { %>
+			<% products.forEach(product => { %>
 				
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/products/<%= product.id %>">
+						<div>
+							<a href="/products/<%= product.id %>">
 							<figure class="product-box_image">
 								<img src="/images/products/<%= product.image %>" alt="imagen de producto">
 							</figure>
+							</a>
 							<article class="product-box_data">
 								<h2><%= product.price %></h2>
 								<span><%= product.discount %> % OFF</span>
 								<p><%= product.name %></p>
+								<button value="<%= product.id %>" class="add-to-cart">cart</button>
 								<i class="fas fa-truck"></i>
 							</article>
-						</a>
+						</div>
 					</section>
 				</div>
 
@@ -44,24 +47,25 @@
 	<!-- /ultima visita -->
 
 	<!-- Ofertas -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
+	<!-- <div class="container products-wrapper"> -->
+		<!-- <div class="row"> -->
+			<!-- <div class="col-12">
 				<h2 class="products-title">Ofertas</h2>
-			</div>
+			</div> -->
 			<!-- Show the "in-sale" products -->
 
-			<% insale.forEach(product => { %>
-				<%- include('products/product', { product: product }) %>
-			<% }) %>
+			<%# insale.forEach(product => { %>
+				<%#- include('products/product', { product: product }) %>
+			<%# }) %>
 
-		</div>
-	</div>
+		<!-- </div> -->
+	<!-- </div> -->
 	<!-- /Ofertas -->
 
 	<!-- footer -->
 	<%- include('partials/footer')  %>
 	
 	<!-- /footer -->
+	<script src="/js/cart.js"></script>
 </body>	
 </html>

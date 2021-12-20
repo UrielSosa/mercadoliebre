@@ -52,13 +52,15 @@ module.exports = {
                 })
         }
     },
-    edit: function (req, res) {
-        db.Product.findByPk(req.params.id)
-                .then(product => {
-                    res.render('products/edit', { product });
-                }).catch(error => {
-                    return res.send(error)
-                })
+    edit: async function (req, res) {
+        try {
+            let product = await db.Product.findByPk(req.params.id);
+            let categories = await db.Category.findAll();
+            return res.render('products/edit', { product, categories });
+        }catch(e) {
+            return res.json(e);
+        }
+        
     },
     update (req, res) {
         let product = {
