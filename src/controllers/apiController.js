@@ -2,8 +2,7 @@ const db = require('../db/models');
 
 module.exports = {
     index: (req, res) => {
-        console.log(req);
-        db.Product.findAll()
+        db.Product.findAll({include: { all: true }})
             .then(products => {
                 res.status(200).json({
                     status: 200,
@@ -12,7 +11,7 @@ module.exports = {
                 })
             })
             .catch(error => {
-                res.redirect('https://http.cat/501')
+                res.send(error);
             })
     },
     show: (req, res) => {

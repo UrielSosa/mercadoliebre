@@ -12,26 +12,22 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(45),
             notNull: false,
         },
-        price: {
-            type: dataTypes.FLOAT,
-            notNull: false,
-        },
-        discount: {
-            type: dataTypes.INTEGER,
-            notNull: false,
-        },
         description: {
             type: dataTypes.TEXT,
             notNull: false,
         },
-        image: {
-            type: dataTypes.STRING(45),
+        price: {
+            type: dataTypes.DECIMAL,
+            notNull: false,
+        },
+        brand_id: {
+            type: dataTypes.INTEGER,
             notNull: false,
         },
         category_id: {
             type: dataTypes.INTEGER,
             notNull: false,
-        },
+        }
     }
 
     const config = {
@@ -45,9 +41,11 @@ module.exports = (sequelize, dataTypes) => {
 
     Product.associate = models => {
         Product.belongsTo(models.Category, {as: 'category', foreignKey: 'category_id'});
+        Product.belongsTo(models.Brand, {as: 'brand', foreignKey: 'brand_id'});
+        Product.belongsToMany(models.Color, {as: 'colors', through: 'product_color' ,foreignKey: 'product_id', otherKey: 'color_id', timestamps: false });
+        Product.belongsToMany(models.Image, {as: 'images', through: 'product_image' ,foreignKey: 'product_id', otherKey: 'image_id',  timestamps: false });
+        Product.belongsToMany(models.Order, {as: 'orders', through: models.OrderDetail ,foreignKey: 'product_id', otherKey: 'order_id',  timestamps: false });
     }
 
     return Product;
 }
-
-// Un producto tiene una categoria - belongsTo
